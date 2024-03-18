@@ -1,0 +1,34 @@
+@using Microsoft.IdentityModel.Tokens
+@model IEnumerable<TP3.Web.ViewModels.ProduitIndexVM>
+
+<h1 class="text-center">Liste des 20 premiers produits</h1>
+@{
+    ViewData["Title"] = "Produits";
+}
+
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Description</th>
+            <th scope="col">Catégorie</th>
+            <th scope="col">Nom du fabricant</th>
+            <th scope="col">Prix coûtant</th>
+            <th scope="col">Date de création</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var produit in Model)
+    {
+        var categorieAssocie = produit.CategorieAssociee.Titre.IsNullOrEmpty() ? "N/A" : produit.CategorieAssociee.Titre;
+        <tr>
+            <th><a href="/produits/edit/@produit.Id">@produit.Nom</a></th>
+            <td>@produit.Description</td>
+            <td>@categorieAssocie</td>
+            <td>@produit.Fabricant.Nom</td>
+            <td>@produit.PrixEnCentime.ToString("C2")</td>
+            <td>@produit.CreeLe.ToString("yyyy-MM-dd HH:mm:ss")</td>
+        </tr>
+    }
+    </tbody>
+</table>

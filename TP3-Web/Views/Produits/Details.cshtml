@@ -1,0 +1,15 @@
+@using Microsoft.IdentityModel.Tokens
+@model TP3.Web.ViewModels.ProduitDetailsVM
+
+<h1>Produit: @Model.Nom</h1>
+@{
+    ViewData["Title"] = "Produit: " + Model.Nom;
+    var categorieAssocie = Model.Categorie.Titre.IsNullOrEmpty() ? "N/A" : Model.Categorie.Titre;
+}
+
+<p>Nom: @Model.Nom</p>
+<p>Description: @Model.Description</p>
+<p>Catégorie associée: @categorieAssocie</p>
+<p>Nom du fabricant: @Model.Fabricant.Nom</p>
+<p>Prix: @Model.Prix.ToString("C2")</p>
+<p>Date de création: @Model.CreeLe.ToString("yyyy-MM-dd HH:mm:ss")</p>
