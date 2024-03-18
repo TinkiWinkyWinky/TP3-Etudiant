@@ -18,5 +18,17 @@ namespace TP3.Web.Controllers
             }
             ));
         }
+
+        public IActionResult Details(int id)
+        {
+
+            return View(_context.Categories.Where(x => x.Id == id).Select(x => new DetailsCategoriesVM()
+            {
+                Titre = x.Titre,
+                Description = x.Description,
+                ProduitsRelies = x.ProduitsRelies
+            }).FirstOrDefault()
+            );
+        }
     }
 }

@@ -1,0 +1,10 @@
+﻿@model TP3.Web.ViewModels.DetailsCategoriesVM
+
+<p>@Model.Titre</p>
+<p>@Model.Description</p>
+<ul>
+@foreach (var produit in Model.ProduitsRelies)
+{
+    <li>@produit.Nom</li>
+}
+</ul>

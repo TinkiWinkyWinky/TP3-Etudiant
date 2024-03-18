@@ -12,11 +12,7 @@
         @foreach (var categorie in Model)
         {
             <tr>
-                <form asp-controller="Categories" asp-action="Details" method="post">
-                    <button type ="submit">
-                        <td>@categorie.Titre</td>
-                    </button>
-                </form>
+                <td><a href="/Categories/Details/@categorie.Id">@categorie.Titre</a></td>
                 <td>@categorie.Description</td>
                 <td>@categorie.NombreProduits</td>
             </tr>
