@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TP3.Web.ViewModels.ShowCategoriesVM>
+
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Titre</th>
+            <th scope="col">Description</th>
+            <th scope="col">Nombre de produits associés</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var categorie in Model)
+        {
+            <tr>
+                <form asp-controller="Categories" asp-action="Details" method="post">
+                    <button type ="submit">
+                        <td>@categorie.Titre</td>
+                    </button>
+                </form>
+                <td>@categorie.Description</td>
+                <td>@categorie.NombreProduits</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <td><img width="10%" height="10%" src="/images/delete.png"></td>
+        </tr>
+    </tfoot>
+</table>

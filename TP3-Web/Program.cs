@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TP3.Web.Data;
+using TP3.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddScoped<CategorieService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
