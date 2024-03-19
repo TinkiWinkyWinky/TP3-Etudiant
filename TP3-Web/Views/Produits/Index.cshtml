@@ -20,11 +20,16 @@
     <tbody>
     @foreach (var produit in Model)
     {
-        var categorieAssocie = produit.CategorieAssociee.Titre.IsNullOrEmpty() ? "N/A" : produit.CategorieAssociee.Titre;
         <tr>
             <th><a href="/produits/edit/@produit.Id">@produit.Nom</a></th>
             <td>@produit.Description</td>
-            <td>@categorieAssocie</td>
+                @if (produit.CategorieAssociee != null && !produit.CategorieAssociee.Titre.IsNullOrEmpty())
+                {
+                    <td>@produit.CategorieAssociee.Titre</td>
+                } else
+                {
+                    <td>N/A</td>
+                }
             <td>@produit.Fabricant.Nom</td>
             <td>@produit.PrixEnCentime.ToString("C2")</td>
             <td>@produit.CreeLe.ToString("yyyy-MM-dd HH:mm:ss")</td>

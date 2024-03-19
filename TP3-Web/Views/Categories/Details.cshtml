@@ -5,6 +5,6 @@
 <ul>
 @foreach (var produit in Model.ProduitsRelies)
 {
-    <li>@produit.Nom</li>
+        <li><a href="/Produits/Details/@produit.Id">@produit.Nom</a></li>
 }
 </ul>
