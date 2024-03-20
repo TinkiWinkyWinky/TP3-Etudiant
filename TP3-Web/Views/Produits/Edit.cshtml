@@ -1,0 +1,65 @@
+@model TP3.Web.ViewModels.ProduitEditVM
+
+@{
+    ViewData["Title"] = "Modifier";
+}
+
+<h1>Modifier un produit</h1>
+
+<h4>ProduitEditVM</h4>
+<hr/>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id"/>
+            <div class="form-group">
+                <label asp-for="Nom" class="control-label"></label>
+                <input asp-for="Nom" class="form-control"/>
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control"/>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategorieAssociees" class="control-label"></label>
+                <select asp-for="CategorieAssocieeId" asp-items="@Model.CategorieAssociees" class="form-control">
+                    <option>Sélectionner une option</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fabricants" class="control-label"></label>
+                <select asp-for="FabricantId" asp-items="@Model.Fabricants" class="form-control">
+                    <option>Sélectionner une option</option>
+                </select>
+                <span asp-validation-for="FabricantId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrixEnCentime" class="control-label"></label>
+                <input asp-for="PrixEnCentime" class="form-control"/>
+                <span asp-validation-for="PrixEnCentime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreeLe" class="control-label"></label>
+                <input asp-for="CreeLe" class="form-control" disabled/>
+                <span asp-validation-for="CreeLe" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enregistrer" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Retourner à la liste</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
